@@ -137,11 +137,20 @@ function endGame(winningPlayer) {
 const initialMessage = document.getElementById('initial-message');
 const startButton = document.getElementById('start');
 const overlay = document.getElementById('overlay');
+const oneInput = document.getElementById('playerOne');
+const twoInput = document.getElementById('playerTwo');
 
 startButton.addEventListener('click', () => hideMessage(initialMessage, overlay));
 
 function hideMessage(message, overlay) {
-  message.classList.add('hidden');
-  overlay.classList.add('hidden');
-  startGame();
+  if (oneInput.value === '' || twoInput.value === '') {
+    oneInput.classList.add('missing');
+    twoInput.classList.add('missing');
+  } else {
+    message.classList.add('hidden');
+    overlay.classList.add('hidden');
+    playerOne.playerName = document.getElementById('playerOne').value;
+    playerTwo.playerName = document.getElementById('playerTwo').value;
+    startGame();
+  }
 }
