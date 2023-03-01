@@ -21,7 +21,11 @@ const playerTwo = createPlayer('Two', 'o');
 let currentPlayer = playerOne;
 
 function startGame() {
+  gameOver = false;
   cells.forEach((cell) => {
+    while (cell.firstChild) {
+      cell.removeChild(cell.firstChild);
+    }
     cell.addEventListener('click', getClick, { once: true });
   });
 }
@@ -112,11 +116,6 @@ function getClick(e) {
     }
   });
 
-  function drawGame() {
-    gameOver = true;
-    console.log("It's a draw!");
-  }
-
   // switch players
   if (currentPlayer === playerOne) {
     currentPlayer = playerTwo;
@@ -128,9 +127,27 @@ function getClick(e) {
 // for dealing with end of game
 let gameOver = false;
 
+const endingMessage = document.getElementById('ending-message');
+
+const restartButton = document.createElement('button');
+restartButton.classList.add('restart');
+restartButton.id = 'restart';
+restartButton.textContent = 'New game';
+
 function endGame(winningPlayer) {
   gameOver = true;
-  console.log(`${winningPlayer} wins !`);
+  endingMessage.classList.add('show');
+  endingMessage.textContent = `${winningPlayer} wins!`;
+  endingMessage.appendChild(restartButton);
+  overlay.classList.remove('hidden');
+}
+
+function drawGame() {
+  gameOver = true;
+  endingMessage.classList.add('show');
+  endingMessage.textContent = 'It\'s a draw!';
+  endingMessage.appendChild(restartButton);
+  overlay.classList.remove('hidden');
 }
 
 // Pop up for players' names and start button
@@ -154,3 +171,22 @@ function hideMessage(message, overlay) {
     startGame();
   }
 }
+
+// For dealing with game restart
+function restartGame() {
+  board = [
+    '', '', '',
+    '', '', '',
+    '', '', '',
+  ];
+  cells.forEach((cell) => {
+    while (cell.firstChild) {
+      cell.removeChild(cell.firstChild);
+    }
+  });
+  endingMessage.classList.remove('show');
+  overlay.classList.add('hidden');
+  startGame();
+}
+
+restartButton.addEventListener('click', restartGame);
