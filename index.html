@@ -6,9 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Golos+Text">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
     <script type="text/javascript" src="./script.js" defer></script>
+
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
+    <div class="initial-message" id="initial-message">
+        <div class="player-container">
+            <img src="" alt="icon placeholder">
+            <div>Enter Player One name</div>
+            <input type="text" name="playerOne" id="playerOne">
+        </div>
+        <div class="player-container">
+            <img src="" alt="icon placeholder">
+            <div>Enter Player Two name</div>
+            <input type="text" name="playerTwo" id="playerTwo">
+        </div>
+        <button class="start" id="start">Start Game</button>
+    </div>
     <div class="grid" id="grid">
         <div class="cell" data-cell></div>
         <div class="cell" data-cell></div>

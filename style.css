@@ -12,9 +12,55 @@ body {
     margin: auto;
     height: 60vh;
     width: 60vh;
-    gap: 2%;
+    gap: 2%;    
 }
 
 .grid > .cell {
+    display: flex;
+    font-family: Golos Text;
     background-color: rgb(235, 189, 130);
+    justify-content: center;
+    align-items: center;
+}
+
+.cell > .o-icon {
+    font-size: 60px;
+}
+
+.cell > .x-icon {
+    font-size: 70px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.initial-message {
+    height: 30vh;
+    width: 80vh;
+    position: absolute;
+    left: 50%;
+    margin-left: -40vh;
+    top: 50%;
+    margin-top: -15vh;
+    background-color: aliceblue;
+}
+
+.initial-message.hidden {
+    transform: scale(0);
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
+
+.player-container {
+    display: flex;
 }

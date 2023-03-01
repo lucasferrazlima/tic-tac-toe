@@ -28,9 +28,24 @@ function startGame() {
 
 // Function for assigning markers to board and for game flow in general
 function getClick(e) {
-  // place marker on board
+  // Assigning icons - it must be assigned inside getClick, otherwise the same element...
+  // ...will be appended to the other cells (making it disappear from previous cells)
   const cell = e.target;
-  cell.textContent = currentPlayer.marker;
+  const xIcon = document.createElement('i');
+  xIcon.classList.add('material-icons-outlined', 'x-icon');
+  xIcon.textContent = 'close';
+
+  const oIcon = document.createElement('i');
+  oIcon.classList.add('material-icons-outlined', 'o-icon');
+  oIcon.textContent = 'circle';
+
+  // place marker on board
+  if (currentPlayer.marker === 'x') {
+    cell.appendChild(xIcon);
+  } else if (currentPlayer.marker === 'o') {
+    cell.appendChild(oIcon);
+  }
+
   const cellIndex = Array.prototype.indexOf.call(cells, cell);
   board[cellIndex] = currentPlayer.marker;
 
@@ -118,4 +133,15 @@ function endGame(winningPlayer) {
   console.log(`${winningPlayer} wins !`);
 }
 
-startGame();
+// Pop up for players' names and start button
+const initialMessage = document.getElementById('initial-message');
+const startButton = document.getElementById('start');
+const overlay = document.getElementById('overlay');
+
+startButton.addEventListener('click', () => hideMessage(initialMessage, overlay));
+
+function hideMessage(message, overlay) {
+  message.classList.add('hidden');
+  overlay.classList.add('hidden');
+  startGame();
+}
