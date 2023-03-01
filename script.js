@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable prefer-const */
 
 let board = [
@@ -105,7 +106,6 @@ function getClick(e) {
   }
 
   // check for draw
-  allFilled = false;
   let count = 0;
   board.forEach((element) => {
     if (element !== '') {

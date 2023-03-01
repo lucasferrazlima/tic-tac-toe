@@ -1,15 +1,39 @@
+html {
+    font-family: 'Fjalla One';
+}
+
 body {
     margin: 0;
     height: 100vh;
     width: 100vw;
     display: flex;
+    background-color: #fafa7e;
+}
+
+.main-container {
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    margin: auto;
+    gap: 4rem;
+}
+
+.title {
+    font-family: 'Fjalla One';
+    font-size: 5rem;
+    font-weight: bold;
+    color: #fc7a4a;
+    align-self: center;
+}
+
+.title.positioning {
+    color: #fafa7e;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin: auto;
     height: 60vh;
     width: 60vh;
     gap: 2%;    
@@ -17,10 +41,10 @@ body {
 
 .grid > .cell {
     display: flex;
-    font-family: Golos Text;
-    background-color: rgb(235, 189, 130);
+    background-color: #4c1d95;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .cell > .o-icon {
@@ -31,6 +55,10 @@ body {
     font-size: 70px;
 }
 
+i {
+    color: white;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -38,6 +66,7 @@ body {
     bottom: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .overlay.hidden {
@@ -45,48 +74,130 @@ body {
 }
 
 .initial-message {
-    height: 30vh;
-    width: 80vh;
+    height: 25vh;
+    width: 60vh;
     position: absolute;
     left: 50%;
-    margin-left: -40vh;
+    margin-left: -30vh;
     top: 50%;
-    margin-top: -15vh;
-    background-color: aliceblue;
+    margin-top: -12.5vh;
+    background-color: #fafa7e;
+    border: solid 4px #4c1d95;
+    border-radius: 10px;
+    color: #4c1d95;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
 }
 
+img {
+    height: 25px;
+    width: auto;
+}
+
+button {
+    background-color: #fafa7e;
+    color: #fc7a4a;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Fjalla One';
+    cursor: pointer;
+    border: none;
+    
+}
 
 .initial-message.hidden {
     transform: scale(0);
-    transition-duration: 1s;
+    transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
 }
 
 .ending-message {
     transform: scale(0);
-    height: 30vh;
-    width: 80vh;
+    height: 25vh;
+    width: 60vh;
     position: absolute;
     left: 50%;
-    margin-left: -40vh;
+    margin-left: -30vh;
     top: 50%;
-    margin-top: -15vh;
-    background-color: aliceblue;
+    margin-top: -12.5vh;
+    background-color: #fafa7e;
+    border: solid 4px #4c1d95;
+    border-radius: 10px;
+    color: #4c1d95;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
 }
 
 .ending-message.show {
     transform: scale(1);
     transition-timing-function: ease-in-out;
-    height: 30vh;
-    width: 80vh;
+    height: 25vh;
+    width: 60vh;
     position: absolute;
     left: 50%;
-    margin-left: -40vh;
+    margin-left: -30vh;
     top: 50%;
-    margin-top: -15vh;
-    background-color: aliceblue;
+    margin-top: -12.5vh;
+    background-color: #fafa7e;
+    border: solid 4px #4c1d95;
+    border-radius: 10px;
+    color: #4c1d95;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
 }
 
 .player-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-container > input {
+    width: 100px;
+    background-color: #fafa7e;
+    border: none;
+    border-bottom: 2px solid #fc7a4a;
+    font-family: 'Fjalla One';
+    color: #4c1d95;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.player-container>input:focus {
+    outline: none;
+    font-size: 1.4rem;
+}
+
+footer {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #fc7a4a;
+    font-size: 1.4rem;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: #4c1d95;
+}
+
+button:focus {
+    outline: none;
 }
